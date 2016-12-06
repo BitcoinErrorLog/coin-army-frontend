@@ -1,0 +1,178 @@
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myMessageGroupLabel">Add a group</h4>
+    </div>
+    <div class="modal-body row">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="container-fluid row">
+            <div class="form-group col-sm-6">
+                <label class="control-label" for="field_name">Name</label>
+                <input type="text" class="form-control" name="name" id="field_name"
+                       ng-model="vm.messageGroup.name"
+                       required ng-minlength="2"/>
+
+                <div ng-show="editForm.name.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.name.$error.required">
+                        This field is required.
+                    </p>
+
+                    <p class="help-block"
+                       ng-show="editForm.name.$error.minlength" translate-value-min="2">
+                        This field is required to be at least 2 characters.
+                    </p>
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <label class="control-label" for="field_owner">Owner</label>
+                <input type="text" class="form-control" name="owner" id="field_owner"
+                       ng-model="vm.messageGroup.owner"
+                       required ng-minlength="2"/>
+
+                <div ng-show="editForm.owner.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.owner.$error.required">
+                        This field is required.
+                    </p>
+
+                    <p class="help-block"
+                       ng-show="editForm.owner.$error.minlength" translate-value-min="2">
+                        This field is required to be at least 2 characters.
+                    </p>
+                </div>
+            </div>
+        </div><div class="container-fluid row">
+            <div class="form-group col-sm-12">
+                <label class="control-label" for="field_telegram">Telegram</label>
+                <input type="text" class="form-control" name="telegram" id="field_telegram"
+                       ng-model="vm.messageGroup.telegram"
+                        />
+            </div>
+            <div class="form-group col-sm-12">
+                <label class="control-label" for="field_description">Description</label>
+            <textarea class="form-control" name="description" id="field_description"
+                      ng-model="vm.messageGroup.description"></textarea>
+            </div>
+
+            <div class="form-group col-sm-6">
+                <label class="control-label" for="field_members">Members</label>
+                <input type="number" class="form-control" name="members" id="field_members"
+                       ng-model="vm.messageGroup.members" required
+                        />
+
+                <div ng-show="editForm.members.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.members.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group col-sm-6" ngf-drop ngf-change="vm.setLogo($file, vm.messageGroup)" ngf-pattern="'image/*'">
+                <label class="control-label" for="field_logo">Logo</label>
+
+                <div>
+                    <img data-ng-src="{{'data:' + vm.messageGroup.logoContentType + ';base64,' + vm.messageGroup.logo}}"
+                         style="max-height: 100px;" ng-if="vm.messageGroup.logo"/>
+
+                    <div ng-if="vm.messageGroup.logo" class="help-block clearfix">
+                        <span class="pull-left">{{vm.messageGroup.logoContentType}}, {{vm.byteSize(vm.messageGroup.logo)}}</span>
+                        <button ng-click="vm.messageGroup.logo=null;vm.messageGroup.logoContentType=null;"
+                                class="btn btn-default btn-xs pull-right">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </div>
+                    <button type="file" ngf-select class="btn btn-default btn-block"
+                            ngf-change="vm.setLogo($file, vm.messageGroup)" accept="image/*">
+                        Add image
+                    </button>
+                </div>
+                <input type="hidden" class="form-control" name="logo" id="field_logo"
+                       ng-model="vm.messageGroup.logo"
+                        />
+                <input type="hidden" class="form-control" name="logoContentType" id="field_logoContentType"
+                       ng-model="vm.messageGroup.logoContentType"/>
+            </div>
+        </div><div class="container-fluid row">
+            <div class="form-group col-sm-6">
+                <label class="control-label" for="field_language">Language</label>
+                <input type="text" class="form-control" name="language" id="field_language"
+                       ng-model="vm.messageGroup.language"
+                       ng-minlength="2" ng-maxlength="2" required/>
+
+                <div ng-show="editForm.language.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.language.$error.required">
+                        This field is required.
+                    </p>
+
+                    <p class="help-block"
+                       ng-show="editForm.language.$error.minlength" translate-value-min="2">
+                        This field is required to be at least 2 characters.
+                    </p>
+
+                    <p class="help-block"
+                       ng-show="editForm.language.$error.maxlength">
+                        This field cannot be longer than 2 characters.
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group col-sm-6">
+                <label for="field_category">Category</label>
+                <select class="form-control" id="field_category" name="category" ng-model="vm.messageGroup.category"
+                        required
+                        ng-options="category as category.name for category in vm.categories track by category.id">
+                    <option value=""></option>
+                </select>
+
+                <div ng-show="editForm.category.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.category.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+        </div><div class="container-fluid row">
+            <div class="form-group col-sm-6">
+                <label for="field_labels">Labels</label>
+                <select class="form-control" id="field_labels" multiple name="labels" ng-model="vm.messageGroup.labels"
+                        ng-options="label as label.name for label in vm.labels track by label.id"></select>
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="field_region">Region</label>
+                <select class="form-control" id="field_region" name="region" ng-model="vm.messageGroup.region.id"
+                        ng-options="region.id as region.name for region in vm.regions">
+                    <option value=""></option>
+                </select>
+            </div>
+        </div><div class="container-fluid row">
+            <div class="form-group col-sm-6">
+                <label for="field_country">Country</label>
+                <select class="form-control" id="field_country" name="country" ng-model="vm.messageGroup.country.id"
+                        ng-options="country.id as country.name for country in vm.countries">
+                    <option value=""></option>
+                </select>
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="field_city">City</label>
+                <select class="form-control" id="field_city" name="city" ng-model="vm.messageGroup.city.id"
+                        ng-options="city.id as city.name for city in vm.cities">
+                    <option value=""></option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

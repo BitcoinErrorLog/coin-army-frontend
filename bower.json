@@ -1,0 +1,33 @@
+{
+  "name": "frontend",
+  "version": "0.0.0",
+  "authors": [
+    "adrianp <peter21adrian@gmail.com>"
+  ],
+  "main": "src/main/webapp/index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/main/webapp/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.7",
+    "angular-bootstrap": "1.3.3",
+    "angular-google-analytics": "~1.1.7",
+    "angular-mocks": "~1.5.7",
+    "angular-resource": "~1.5.7",
+    "angular-ui-router": "~0.3.1",
+    "ngstorage": "0.3.10",
+    "ng-file-upload": "12.0.4",
+    "requirejs": "2.2.0",
+    "requirejs-domready": "2.0.1",
+    "rxjs": "latest",
+    "jquery": "2.2.4",
+    "bootstrap-sass": "~3.3.6",
+    "ngInfiniteScroll": "1.2.2"
+  }
+}

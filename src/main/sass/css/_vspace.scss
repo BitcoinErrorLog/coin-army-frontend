@@ -1,0 +1,36 @@
+.vspace-not-xs,.vspace-not-sm,.vspace-not-md,.vspace-not-lg, {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 767px) {
+  .vspace-not-xs {
+    margin-bottom: inherit;
+  }
+  .vspace-xs {
+    margin-bottom: 10px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .vspace-not-sm {
+    margin-bottom: inherit;
+  }
+  .vspace-sm {
+    margin-bottom: 10px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .vspace-not-md {
+    margin-bottom: inherit;
+  }
+  .vspace-md {
+    margin-bottom: 10px;
+  }
+}
+@media (min-width: 1200px) {
+  .vspace-not-lg {
+    margin-bottom: inherit;
+  }
+  .vspace-lg {
+    margin-bottom: 10px;
+  }
+}

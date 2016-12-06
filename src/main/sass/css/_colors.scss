@@ -1,0 +1,36 @@
+$labelClasses: (
+                ("transparent", "transparent"),
+                ("gray", "#888"),
+                ("dark-gray", "#333"),
+                ("light-gray", "#CCC", "#000"),
+                ("blue", "#00F"),
+                ("light-blue", "#88F"),
+                ("dark-blue", "#008"),
+                ("green", "#0F0"),
+                ("light-green", "#8F8", "#000"),
+                ("dark-green", "#080"),
+                ("red", "#F00"),
+                ("light-red", "#F88"),
+                ("dark-red", "#800"),
+                ("yellow", "#FF0", "#000"),
+                ("canary", "#FF8", "#000"),
+                ("olive", "#880"),
+                ("magenta", "#F0F"),
+                ("fuchsia", "#F8F"),
+                ("dark-magenta", "#808"),
+                ("cyan", "#0FF", "#000"),
+                ("dark-cyan", "#088")
+);
+
+a.label, a.label:hover {
+  color:#FFF;
+}
+
+@each $item in $labelClasses {
+  .label.label-#{nth($item, 1)}, .label.label-#{nth($item, 1)}:hover {
+    background-color: #{nth($item, 2)};
+    @if length($item) > 2 {
+      color: #{nth($item, 3)};
+    }
+  }
+}

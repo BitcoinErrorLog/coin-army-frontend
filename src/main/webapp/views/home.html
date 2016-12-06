@@ -1,0 +1,79 @@
+<div class="container" infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+    <br/>
+    <header></header>
+
+    <div class="tbl">
+        <!--<div class="container-fluid tblh banner">
+            <div class="row">
+                    We'll get you started with some Bitcoin and do our best to answer all your Bitcoin related questions.
+            </div>
+        </div>-->
+
+        <div class="container-fluid hidden-xs tblh">
+            <div class="row">
+                <div class="col-sm-offset-3 col-sm-18 col-xs-15">
+                    <div class="row"><div class="container-fluid"><div class="row">
+                        <div class="col-sm-18 col-md-19"><strong></strong></div>
+                        <div class="col-sm-2 text-center-not-xs col-xs-14"><strong uib-tooltip="Members / Language">Members</strong></div>
+                        <div class="col-sm-4 col-md-3">
+                            <strong>Owner</strong>
+                        </div>
+                    </div></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid tblr" ng-repeat="mg in messageGroups">
+            <div class="row">
+                <div class="col-sm-3 col-xs-24 vspace-xs">
+                    <span ng-show="mg.category != null">
+                        <a ui-sref="category({categoryCode: mg.category.code})" class="label {{mg.category.elementClass}}">{{mg.category.name}}</a>
+                    </span>
+                    <span ng-show="mg.label != null">
+                        <a ui-sref="label({labelCode: mg.label.code})" class="label {{mg.label.elementClass}}">{{mg.label.name}}</a>
+                    </span>
+                </div>
+                <div class="clearfix visible-xs-block"></div>
+                <div class="col-sm-18 col-xs-17">
+                    <div class="row"><div class="container-fluid"><div class="row">
+                        <div class="col-sm-18 col-md-19">
+                            <div class="thumb-container">
+                                <img data-ng-src="{{'data:' + mg.logoContentType + ';base64,' + mg.logo}}" class="thumb"/>
+                                <a ui-sref="profile({identifier: mg.identifier})">{{mg.name | limitTo : 50}}</a><br/>
+                                <small class="text-muted" ng-bind-html="mg.description | extractShortDescription"></small>
+                            </div>
+                        </div>
+                        <div class="clearfix visible-xs-block"></div>
+                        <div class="col-sm-2 text-center-not-xs col-xs-24">
+                            <div>
+                                <strong class="visible-xs-inline">Cadets: </strong>
+                                <span class="text-info"><span class="glyphicon glyphicon-question-sign"
+                                                  uib-tooltip="Member count unavailable"
+                                                  ng-show="mg.members == null"></span>{{mg.members}}</span>
+                            </div>
+                            <div>
+                                <strong class="visible-xs-inline">Language: </strong>
+                                <span class="text-info"><span class="glyphicon glyphicon-question-sign"
+                                                              uib-tooltip="Language unavailable" ng-show="mg.language == null"></span>
+                                    <a ng-show="mg.language != null" ui-sref="language({languageCode: mg.language})"
+                                       class="label label-primary">{{mg.language}}</a>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-md-3 col-xs-24">
+                            <strong class="visible-xs-inline">General: </strong>
+                            <a ng-show="mg.ownerLink" ng-href="{{mg.ownerLink}}" target="_blank">{{mg.owner}}</a>
+                            <span ng-hide="mg.ownerLink">{{mg.owner}}</span>
+                        </div>
+                    </div></div></div>
+                </div>
+                <div class="col-sm-3 text-right col-xs-7">
+                    <a ng-show="mg.telegram" ng-href="{{mg.telegram}}" target="_blank"
+                       class="btn btn-default">
+                        <i class="glyphicon glyphicon-link"></i> Join</a>
+                </div>
+            </div>
+        </div>
+        <loader ng-show="loading"/>
+    </div>
+    <footer></footer>
+</div>

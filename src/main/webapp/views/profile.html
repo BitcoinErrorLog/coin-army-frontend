@@ -1,0 +1,109 @@
+<div class="container-fluid page-wrapper">
+    <br/>
+    <header></header>
+
+    <h3 class="thumb-container"><img data-ng-src="{{'data:' + group.logoContentType + ';base64,' + group.logo}}"
+                                     class="thumb"/> {{group.name}}</h3>
+
+
+    <br/>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-24 col-xs-24 group-description" ng-show="group.description" ng-bind-html="group.description | trust:html">
+            </div>
+            <div class="col-md-24 col-xs-24" ng-show="group.id == 164">
+                <p>We'll get you started with some Bitcoin and do our best to answer all your Bitcoin related questions.</p>
+
+                <p>
+                    <ol>
+                        <li>Join our Telegram group: <a href="https://telegram.me/joinchat/ARcgkQjPUZbL3kOKB95sCA">https://telegram.me/joinchat/ARcgkQjPUZbL3kOKB95sCA</a></li>
+                        <li>Set up a username in Settings. </li>
+                        <li>Check in with <a href="https://telegram.me/bitcoinwalletbot">@bitcoinwalletbot</a>. <a href="http://www.telebit.org/">Telebit</a> is a simple bitcoin wallet that works using the popular messaging app Telegram </li>
+                        <li>Request your Bitcoin by posting your username in the chat </li>
+                        <li>Check the <a href="https://bitcoin.org/en/getting-started">Getting started with Bitcoin</a> guide and chose a wallet. </li>
+                        <li>Transfer your bits to your new wallet. </li>
+                        <li>Check <a href="www.coin.army">www.coin.army</a> for a list of Bitcoin related telegram groups and local communities. </li>
+                    </ol>
+                </p>
+
+                <p>
+                    More: <br/>
+                    <ul>
+                        <li>Telegram has a web version available here: <a href="http://web.telegram.org">http://web.telegram.org</a></li>
+                        <li>After you join a group, remember to mute group notifications, otherwise this can get really annoying.</li>
+                    </ul>
+                </p>
+            </div>
+            <div class="col-md-8 col-xs-12" ng-show="group.members">
+                <p><strong>Members</strong><br/>{{group.members}}</p>
+            </div>
+
+            <div class="col-md-8 col-xs-12" ng-show="group.amount">
+                <p><strong>Funds</strong><br/>{{group.amount}}</p>
+            </div>
+
+            <div class="col-md-8 col-xs-12" ng-show="group.owner">
+                <p>
+                    <strong>Owner</strong><br/>
+                    <a ng-show="group.ownerLink" ng-href="{{group.ownerLink}}" target="_blank">{{group.owner}}</a>
+                    <span ng-hide="group.ownerLink">{{group.owner}}</span>
+                </p>
+            </div>
+
+            <div class="col-md-8 col-xs-12" ng-show="group.categories && group.categories.length > 0">
+                <p><strong>Categories</strong><br/>
+                    <a ng-repeat="c in group.categories" ui-sref="category({categoryCode: c.code})"
+                       class="label {{c.elementClass}}">{{c.name}}</a></p>
+            </div>
+
+            <div class="col-md-8 col-xs-12" ng-show="group.labels && group.labels.length > 0">
+                <p><strong>Labels</strong><br/>
+                    <a ng-repeat="l in group.labels" ui-sref="label({labelCode: l.code})"
+                       class="label {{l.elementClass}}">{{l.name}}</a></p>
+            </div>
+
+            <div class="col-md-8 col-xs-12" ng-show="group.language">
+                <p><strong>Language</strong><br/>
+                    <span class="text-info">
+                        <a ui-sref="language({languageCode: group.language})" class="label label-primary">{{group.language}}</a>
+                    </span>
+            </div>
+
+            <div class="col-md-8 col-xs-24" ng-show="profile.website">
+                <p><strong>Website</strong><br/><a href="{{profile.website}}">{{profile.website}}</a></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-xs-12" ng-show="group.rules">
+                <p>{{group.rules}}</p>
+            </div>
+        </div>
+
+        <div class="text-center join-section">
+            <a ng-show="group.telegram" ng-href="{{group.telegram}}" target="_blank" class="btn btn-default">
+                <i class="join-btn"></i>
+                <span class="join-txt">Join Group</span>
+            </a>
+        </div>
+
+        <div class="row">
+            <table class="table table-striped">
+                <tr>
+                    <th>Cadets</th>
+                    <th class="text-center">Skills / Contributions</th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="member in profile.teamMembers">
+                    <td>{{member.name}}</td>
+                    <td>{{member.description}}</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <footer></footer>
+
+</div>

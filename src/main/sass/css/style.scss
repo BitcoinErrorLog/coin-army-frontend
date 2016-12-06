@@ -1,0 +1,79 @@
+@import "variables";
+@import "bootstrap";
+@import "bootstrap/theme";
+
+@import "text";
+@import "colors";
+@import "vspace";
+@import "loader";
+
+.page-wrapper {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.thumb {
+  max-width: 30px;
+  padding: 3px;
+  border: #DDD 1px solid;
+  float:left;
+}
+
+.thumb-container {
+  padding-left:40px;
+  .thumb {
+    margin-left:-40px;
+  }
+}
+
+
+.tbl{
+  .tblh, .tblr {
+    padding-top: 10px;
+    padding-bottom:10px;
+  }
+
+  .tblr {
+    border-top:#DDD 1px solid;
+  }
+
+  .tblr:nth-child(odd) {
+    background-color: #F9F9F9;
+  }
+}
+
+.banner {
+  font-size: 18px;
+  color: #337ab7;
+  background-color: #F9F9F9;
+  margin-bottom: 20px;
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.join-section {
+  margin: 30px 0;
+}
+
+.join-btn {
+  display: inline-block;
+  background: url(/img/telegram128.png) 0 0 no-repeat;
+  width: 32px;
+  height: 32px;
+  background-size: 32px 32px;
+}
+
+.join-txt {
+  vertical-align: super;
+  font-size: 20px;
+  font-family: Roboto, sans-serif;
+}
+
+.group-description {
+  margin: 20px 0;
+}
